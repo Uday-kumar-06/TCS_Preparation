@@ -1,0 +1,28 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		// help with input errors for string inputs arrays
+		String str = sc.nextLine().trim();
+		
+		String arr [] = str.split(" ");
+		int arr1 [] = new int [arr.length];
+		
+		for(int i = 0;i<arr.length;i++){
+		    arr1[i]= Integer.parseInt(arr[i]);
+		}
+		
+		for(int i = 0;i<arr1.length-1;i++){
+		    for(int j = i;j<arr1.length-1;j++){
+		        if(arr1[j] == 0){
+		            int temp = arr1[j];
+		            arr1[j] = arr1[j+1];
+		            arr1[j+1] = temp;
+		        }
+		    }
+		}
+		
+		System.out.println(Arrays.toString(arr1));
+	}
+}
