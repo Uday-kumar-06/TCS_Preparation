@@ -117,4 +117,394 @@ Crack TCS NQT by mastering **important patterns**, not everything.
 
 ---
 
+# 🚀 TCS NQT Input/Output Mastery Guide (Java)
+
+Master every input/output format asked in **TCS NQT** with ready-to-use Java templates 💪  
+This guide covers **all common patterns** with examples and explanations.
+
+---
+
+## 📌 1. Single Integer
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(n);
+    }
+}
+```
+
+**Input**
+```
+5
+```
+
+---
+
+## 📌 2. Two Integers on Same Line
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.println(a + b);
+    }
+}
+```
+
+**Input**
+```
+5 10
+```
+
+---
+
+## 📌 3. Two Integers on Different Lines
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt(); // works for both cases
+        System.out.println(a + b);
+    }
+}
+```
+
+**Input**
+```
+5
+10
+```
+
+✅ `nextInt()` automatically handles whitespace and newlines.
+
+---
+
+## 📌 4. Array (Size Given First)
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+    }
+}
+```
+
+**Input**
+```
+5
+1 2 3 4 5
+```
+
+---
+
+## 📌 5. Array (No Size Given)
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String line = sc.nextLine().trim();
+
+        String[] parts = line.split(" ");
+        int[] arr = new int[parts.length];
+
+        for (int i = 0; i < parts.length; i++) {
+            arr[i] = Integer.parseInt(parts[i]);
+        }
+
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+    }
+}
+```
+
+**Input**
+```
+1 2 3 4 5
+```
+
+---
+
+## 📌 6. Bracket Format Array `[1,2,3,4,5]`
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String line = sc.nextLine().trim();
+
+        line = line.replace("[", "").replace("]", "");
+        String[] parts = line.split(",");
+
+        int[] arr = new int[parts.length];
+
+        for (int i = 0; i < parts.length; i++) {
+            arr[i] = Integer.parseInt(parts[i].trim());
+        }
+
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+    }
+}
+```
+
+**Input**
+```
+[1,2,3,4,5]
+```
+
+---
+
+## 📌 7. int then String (⚠️ Common Trap)
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        sc.nextLine(); // IMPORTANT
+
+        String s = sc.nextLine();
+
+        System.out.println(n);
+        System.out.println(s);
+    }
+}
+```
+
+**Input**
+```
+5
+hello world
+```
+
+❌ Without `sc.nextLine()` → string becomes empty!
+
+---
+
+## 📌 8. Multiple Strings
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+        sc.nextLine();
+
+        for (int i = 0; i < t; i++) {
+            String s = sc.nextLine().trim();
+            System.out.println(s);
+        }
+    }
+}
+```
+
+**Input**
+```
+3
+hello
+world
+java
+```
+
+---
+
+## 📌 9. Multiple Test Cases with Arrays
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+
+            for (int i = 0; i < n; i++) {
+                arr[i] = sc.nextInt();
+            }
+
+            System.out.println(arr[0]); // example
+        }
+    }
+}
+```
+
+---
+
+## 📌 10. Matrix / 2D Array
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int rows = sc.nextInt();
+        int cols = sc.nextInt();
+
+        int[][] matrix = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+---
+
+## 📌 11. Comma-Separated Values
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String line = sc.nextLine().trim();
+        String[] parts = line.split(",");
+
+        int[] arr = new int[parts.length];
+
+        for (int i = 0; i < parts.length; i++) {
+            arr[i] = Integer.parseInt(parts[i].trim());
+        }
+
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+    }
+}
+```
+
+---
+
+## 📌 12. Mixed Input (Hardest)
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        String name = sc.nextLine();
+
+        int m = Integer.parseInt(sc.nextLine().trim());
+
+        int[] arr = new int[m];
+        String[] parts = sc.nextLine().trim().split(" ");
+
+        for (int i = 0; i < m; i++) {
+            arr[i] = Integer.parseInt(parts[i]);
+        }
+
+        System.out.println(n + " " + name + " " + m);
+    }
+}
+```
+
+---
+
+# 🧠 Golden Rules
+
+```
+Rule 1 → nextInt() skips whitespace & newlines
+Rule 2 → Always use sc.nextLine() after nextInt()
+Rule 3 → Always use trim()
+Rule 4 → Unknown size → nextLine() + split()
+Rule 5 → Bracket format → replace + split
+Rule 6 → Output must be EXACT
+```
+
+---
+
+# ⚡ Universal Template (Safe for Any Input)
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String line = sc.nextLine().trim();
+
+        if (line.contains("[")) {
+            line = line.replace("[","").replace("]","");
+            String[] parts = line.split(",");
+        } else if (line.contains(",")) {
+            String[] parts = line.split(",");
+        } else {
+            String[] parts = line.split(" ");
+        }
+    }
+}
+```
+
+---
+
+## ⭐ Pro Tip
+
+If you're confused in exam:  
+👉 Use `nextLine()` + `split()` → safest approach
+
+---
+
 ⭐ If this helps you, consider giving a star!
